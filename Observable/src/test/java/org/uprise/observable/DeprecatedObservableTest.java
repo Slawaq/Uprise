@@ -40,14 +40,14 @@ public class DeprecatedObservableTest {
 	Assert.assertEquals(observable.getSubscribers().size(), 1);
     }
 
-    @Test
-    public void testOnRunnableSubscriber() {
-	Observable<TestData> observable = new Observable<TestData>(data);
-	observable.subscribe(createRunnableSubscriber());
-	updateName(observable);
-	wait(100);
-	Assert.assertEquals(closureVariable, UPDATED_DATA_NAME);
-    }
+    // @Test
+    // public void testOnRunnableSubscriber() {
+    // Observable<TestData> observable = new Observable<TestData>(data);
+    // observable.subscribe(createRunnableSubscriber());
+    // updateName(observable);
+    // wait(100);
+    // Assert.assertEquals(closureVariable, UPDATED_DATA_NAME);
+    // }
 
     @Test
     public void testOnCallingRunnableSubscriberInAnotherThread() {
