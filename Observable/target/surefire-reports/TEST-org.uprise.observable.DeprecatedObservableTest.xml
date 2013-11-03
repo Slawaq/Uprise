@@ -45,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="user.language.format" value="uk"/>
@@ -65,8 +65,8 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0.106" classname="org.uprise.observable.DeprecatedObservableTest" name="testOnRunnableSubscriber"/>
+  <testcase time="0.104" classname="org.uprise.observable.DeprecatedObservableTest" name="testOnRunnableSubscriber"/>
   <testcase time="0.108" classname="org.uprise.observable.DeprecatedObservableTest" name="testOnClearingSubscribers"/>
-  <testcase time="0.109" classname="org.uprise.observable.DeprecatedObservableTest" name="testOnSavingSubscribers"/>
-  <testcase time="0.1" classname="org.uprise.observable.DeprecatedObservableTest" name="testOnCallingRunnableSubscriberInAnotherThread"/>
+  <testcase time="0.11" classname="org.uprise.observable.DeprecatedObservableTest" name="testOnSavingSubscribers"/>
+  <testcase time="0.101" classname="org.uprise.observable.DeprecatedObservableTest" name="testOnCallingRunnableSubscriberInAnotherThread"/>
 </testsuite>
