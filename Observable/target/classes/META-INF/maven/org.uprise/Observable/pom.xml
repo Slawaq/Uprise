@@ -2,10 +2,16 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.uprise</groupId>
+
+  <parent>
+  	<groupId>org.uprise</groupId>
+  	<artifactId>Uprise</artifactId>
+  	<relativePath>../pom.xml</relativePath>
+  	<version>0.0.1</version>
+  </parent>
+
   <artifactId>Observable</artifactId>
   <packaging>jar</packaging>
-  <version>0.0.1-SNAPSHOT</version>
 
   <name>Observable</name>
   <description>Observable library</description>
@@ -21,28 +27,4 @@
   		<scope>test</scope>
   	</dependency>
   </dependencies>
-  <build>
-  <plugins> 
-    <plugin>
-      <artifactId>maven-source-plugin</artifactId>
-      <executions>
-        <execution>
-          <id>attach-sources</id>
-          <phase>deploy</phase>
-          <goals><goal>jar-no-fork</goal></goals> 
-        </execution>
-      </executions>
-    </plugin>
-    <plugin> 
-      <artifactId>maven-deploy-plugin</artifactId> 
-      <executions> 
-        <execution> 
-          <id>deploy</id>
-          <phase>deploy</phase>
-          <goals><goal>deploy</goal></goals> 
-        </execution> 
-      </executions> 
-    </plugin>
-  </plugins>
-  </build>
 </project>
