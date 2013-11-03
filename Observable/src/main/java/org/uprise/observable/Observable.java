@@ -48,7 +48,7 @@ public class Observable<T> {
 	return subscribers;
     }
 
-    public void fuck() {
-	System.out.println("fuck");
+    public String fuck() {
+	return "fuck";
     }
 }

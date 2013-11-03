@@ -38,6 +38,13 @@ public class ObservableTest {
     }
 
     @Test
+    public void Should_return_FUCK() {
+	Observable<String> observable = new Observable<String>("lal");
+
+	Assert.assertEquals(observable.fuck(), "fuck");
+    }
+
+    @Test
     public void Should_call_subscribers_when_value_updated() {
 	Observable<String> observable = new Observable<String>("magic");
 	final StringBuilder stringWrapper = new StringBuilder();
