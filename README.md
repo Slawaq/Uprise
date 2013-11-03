@@ -1,4 +1,2 @@
-uprise.server
-=============
+Java high performance server - Uprise.
 
-Uprise server
