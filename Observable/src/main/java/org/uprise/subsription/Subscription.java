@@ -1,17 +1,21 @@
 package org.uprise.subsription;
 
-import org.uprise.subscriber.Subscriber;
+import java.util.function.Consumer;
 
-public class Subscription<T> implements Subscriber<T> {
+public class Subscription<T> implements Consumer<T> {
 
-    private Subscriber<T> wrapped;
+    private Consumer<T> subscriber;
 
-    public Subscription(Subscriber<T> subscriber) {
-	wrapped = subscriber;
+    public Subscription(Consumer<T> subscriber) {
+	this.subscriber = subscriber;
     }
 
-    public void notify(T data) {
-	wrapped.notify(data);
+    public void accept(T data) {
+	subscriber.accept(data);
+    }
+    
+    public static <T> Subscription<T> create(Consumer<T> subscriber) {
+	return new Subscription<T>(subscriber);
     }
 
 }

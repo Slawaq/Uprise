@@ -1,8 +1,11 @@
 package org.uprise.observable;
 
+import java.util.function.Consumer;
+
 import org.junit.Assert;
 import org.junit.Test;
-import org.uprise.subscriber.Subscriber;
+import org.mockito.Mockito;
+import org.uprise.subsription.Subscription;
 
 public class ObservableTest {
 
@@ -27,36 +30,48 @@ public class ObservableTest {
     public void Should_update_through_updaterDelegate() {
 	Observable<StringBuilder> observable = new Observable<StringBuilder>(new StringBuilder("magic"));
 
-	observable.update(new Updater<StringBuilder>() {
-
-	    public void update(StringBuilder data) {
-		data.append("-vasya");
-	    }
-	});
+	observable.update(data -> data.append("-vasya"));
 
 	Assert.assertEquals("magic-vasya", observable.get().toString());
     }
 
     @Test
-    public void Should_return_FUCK() {
-	Observable<String> observable = new Observable<String>("lal");
-
-	Assert.assertEquals(observable.fuck(), "fuck");
-    }
-
-    @Test
     public void Should_call_subscribers_when_value_updated() {
 	Observable<String> observable = new Observable<String>("magic");
-	final StringBuilder stringWrapper = new StringBuilder();
-	observable.subscribe(new Subscriber<String>() {
-	    public void notify(String data) {
-		stringWrapper.append(data);
-	    }
-	});
+	@SuppressWarnings("unchecked")
+	Consumer<String> spy = Mockito.mock(Consumer.class);
+	observable.subscribe(spy);
 
 	observable.update("vasya");
 
-	Assert.assertEquals("vasya", stringWrapper.toString());
+	Mockito.verify(spy).accept("vasya");
+    }
+    @Test
+    public void Should_clear_weak_subscribers() {
+	Observable<String> observable = new Observable<String>("lal");
+	observable.subscribe(d -> { });
+
+	callGabargeCollector();
+
+	Assert.assertEquals(observable.getSubscribers().count(), 0);
     }
 
+    @Test
+    public void Should_save_subscriber_when_subscription_exist() {
+	Observable<String> observable = new Observable<String>("lal");
+	@SuppressWarnings("unused")
+	Subscription<String> subscription = observable.subscribe(d -> { });
+
+	callGabargeCollector();
+	
+	Assert.assertEquals(observable.getSubscribers().count(), 1);
+    }
+
+    private void callGabargeCollector() {
+	try {
+	    Thread.sleep(100);
+	} catch (Exception e) {
+	}
+	System.gc();
+    }
 }

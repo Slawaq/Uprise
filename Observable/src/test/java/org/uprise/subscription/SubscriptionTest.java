@@ -1,36 +1,19 @@
 package org.uprise.subscription;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.uprise.subscriber.Subscriber;
 import org.uprise.subsription.Subscription;
 
 public class SubscriptionTest {
 
-    TestSubscriber testSubscriber;
-
-    @Before
-    public void initTestSubscriber() {
-	testSubscriber = new TestSubscriber();
-    }
-
     @Test
     public void Should_create_notifiable_object_from_subscriber() {
-	Subscription<String> subscription = new Subscription<String>(testSubscriber);
+	StringBuilder total = new StringBuilder();
+	Subscription<String> subscription = Subscription.create(s -> total.append(s));
 
-	subscription.notify("value");
+	subscription.accept("apple");
 
-	Assert.assertEquals("value", testSubscriber.lastValue);
+	Assert.assertEquals("apple", total.toString());
     }
 
-}
-
-class TestSubscriber implements Subscriber<String> {
-
-    public String lastValue;
-
-    public void notify(String data) {
-	lastValue = data;
-    }
 }

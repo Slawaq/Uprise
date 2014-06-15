@@ -9,7 +9,6 @@ public class Komenci {
 
     public static void main(String[] args) throws InterruptedException {
 	Observable<String> resource = new Observable<String>("hello,");
-	resource.fuck();
 	resource.subscribe(new ResourceListener());
 	new ResourceUpdater(resource);
 	TimeUnit.SECONDS.sleep(1);
