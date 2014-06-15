@@ -1,3 +1,3 @@
-Java high performance server - <b>Uprise</b>
+<b>Uprise</b> - high performance server on Java 
 
 
