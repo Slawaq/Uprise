@@ -1,3 +1,5 @@
-<b>Uprise</b> - high performance server on Java 
+##Uprise - high performance server on Java
+
+in progress...
 
 
